@@ -3,11 +3,12 @@ package app;
 import lombok.Data;
 import lombok.SneakyThrows;
 
-public class Gomanoids extends Entity {
+@Data
+public class Humanoids extends Entity {
     public boolean isHypnotized;
     public boolean isCaptured;
 
-    public Gomanoids(String name, int x, int y, int z, boolean isCaptured, boolean isHypnotized) {
+    public Humanoids(String name, int x, int y, int z, boolean isCaptured, boolean isHypnotized) {
         this.isHypnotized = isHypnotized;
         this.isCaptured = isCaptured;
         this.name = name;
@@ -41,4 +42,7 @@ public class Gomanoids extends Entity {
         this.z = z;
     }
 
+    public Coordinates getCoordinates() {
+        return new Coordinates(this.x, this.y, this.z);
+    }
 }

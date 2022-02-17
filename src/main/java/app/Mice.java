@@ -5,11 +5,11 @@ import lombok.Data;
 @Data
 public class Mice extends Entity {
 
-    public void hypnotize (Gomanoids gomanoids){
-    if(gomanoids.isHypnotized)
+    public void hypnotize (Humanoids humanoids){
+    if(humanoids.isHypnotized)
         System.out.println("error");
     else{
-        gomanoids.isHypnotized=true;
+        humanoids.isHypnotized=true;
         System.out.println("ok");
     }
     }
