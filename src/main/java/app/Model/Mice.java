@@ -1,7 +1,9 @@
-package app;
+package app.Model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 public class Mice extends Entity {
 

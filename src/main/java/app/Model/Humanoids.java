@@ -1,8 +1,10 @@
-package app;
+package app.Model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.SneakyThrows;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 public class Humanoids extends Entity {
     public boolean isHypnotized;

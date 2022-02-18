@@ -1,4 +1,4 @@
-package app;
+package app.Model;
 
 public class Door extends Things{
    private boolean isOpened;

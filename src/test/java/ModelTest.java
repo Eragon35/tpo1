@@ -1,9 +1,9 @@
-import app.*;
+import app.Model.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class HistoryTest {
+public class ModelTest {
     Humanoids artur = new Humanoids("Artur", 0, 0, 0,false, false);
     Mice mice = new Mice("Ben", 0, 0,0);
     Door door = new Door();
