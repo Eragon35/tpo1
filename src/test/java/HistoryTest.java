@@ -1,22 +1,43 @@
-import app.Coordinates;
-import app.Humanoids;
+import app.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class HistoryTest {
+    Humanoids artur = new Humanoids("Artur", 0, 0, 0,false, false);
+    Mice mice = new Mice("Ben", 0, 0,0);
+    Door door = new Door();
+    Coordinates coordinates = new Coordinates(2, 2, 2);
+    CupsForMice cups = new CupsForMice(new Mice("Franky", 0, 0, 0));
+
     @Test
     public void captureTest(){
-        Humanoids artur = new Humanoids("Artur", 0, 0, 0,false, false);
         artur.capture();
         assertTrue(artur.isCaptured);
     }
 
     @Test
-    public void moveTest(){
-        Humanoids artur = new Humanoids("Artur", 0, 0, 0,false, false);
+    public void hypnotizeTest(){
+        mice.hypnotize(artur);
+        assertTrue(artur.isHypnotized);
+    }
+
+    @Test
+    public void isOpenedTest(){
+        artur.openTheDoor(door);
+        assertTrue(door.getIsOpened());
+    }
+
+    @Test
+    public void moveHumanoidsTest(){
         artur.move(2, 2, 2);
-        Coordinates coordinates = new Coordinates(2, 2, 2);
         assertEquals(artur.getCoordinates(), coordinates);
     }
+
+    @Test
+    public void moveCupsForMiceTest(){
+        cups.move(2,2,2);
+        assertEquals(cups.getCoordinates(), coordinates);
+    }
+
 }
