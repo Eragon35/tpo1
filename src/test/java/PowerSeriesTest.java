@@ -13,62 +13,62 @@ public class PowerSeriesTest {
 
 
     @Test
-    public void powerLowerThanZeroException(){
+    public void powerLowerThanZeroExceptionTest(){
         Exception exception = assertThrows(IllegalArgumentException.class, () -> ps.getResult(0, -1));
         assertEquals("Степень должна быть больше 0", exception.getMessage());
 
     }
 
     @Test
-    public void powerTooBigException(){
+    public void powerTooBigExceptionTest(){
         Exception exception = assertThrows(IllegalArgumentException.class, () -> ps.getResult(0, 34));
         assertEquals("Это слишком долго считать, мальчик иди домой", exception.getMessage());
 
     }
 
     @Test
-    public void sin0 (){
+    public void sin0Test(){
         assertEquals(sin0, ps.getResult(0, 1));
     }
 
     @Test
-    public void sinPiDivided2(){
+    public void sinPiDivided2Test(){
         assertEquals(sinPiDivided2, ps.getResult(Math.PI / 2, 10), delta);
     }
 
     @Test
-    public void lowPower(){
+    public void lowPowerTest(){
         assertNotEquals(sinPiDivided2, ps.getResult(Math.PI / 2, 5), delta);
     }
 
     @Test
-    public void correctResult(){
+    public void correctResultTest(){
         assertEquals(sin78, ps.getResult(0.78, 32), delta);
     }
 
     @Test
-    public void checkFactorial(){
+    public void checkFactorialTest(){
         Exception exception = assertThrows(IllegalArgumentException.class, () -> ps.factorial(-1));
         assertEquals("Факториал должен быть больше 0", exception.getMessage());
     }
 
     @Test
-    public void factorialFromZero(){
+    public void factorialFromZeroTest(){
         assertEquals(1, ps.factorial(0));
     }
 
     @Test
-    public void factorialFromOne(){
+    public void factorialFromOneTest(){
         assertEquals(1, ps.factorial(1));
     }
 
     @Test
-    public void factoiralCheck(){
+    public void factoiralCheckTest(){
         assertEquals(720, ps.factorial(6));
     }
 
     @Test
-    public void factoiralBigCheck(){
+    public void factoiralBigCheckTest(){
         assertEquals(2432902008176640000L, ps.factorial(20));
     }
 

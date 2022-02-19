@@ -17,6 +17,13 @@ public class ModelTest {
     }
 
     @Test
+    public void captureExceptionTest(){
+        artur.capture();
+        Exception exception = assertThrows(Exception.class, () -> artur.capture());
+        assertEquals("Error capture", exception.getMessage());
+    }
+
+    @Test
     public void hypnotizeTest(){
         mice.hypnotize(artur);
         assertTrue(artur.isHypnotized);
@@ -26,6 +33,13 @@ public class ModelTest {
     public void isOpenedTest(){
         artur.openTheDoor(door);
         assertTrue(door.getIsOpened());
+    }
+
+    @Test
+    public void openDoorExceptionTest(){
+        artur.openTheDoor(door);
+        Exception exception = assertThrows(Exception.class, () -> artur.openTheDoor(door));
+        assertEquals("Door already open", exception.getMessage());
     }
 
     @Test

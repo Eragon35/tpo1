@@ -21,21 +21,14 @@ public class Humanoids extends Entity {
 
     @SneakyThrows
     public void capture() {
-        if (this.isCaptured)
-            throw new Exception("Error capture");
-        else {
-            this.isCaptured = true;
-            System.out.println("ok");
-        }
+        if (this.isCaptured) throw new Exception("Error capture");
+        else this.isCaptured = true;
     }
 
+    @SneakyThrows
     public void openTheDoor(Door door) {
-        if (door.getIsOpened())
-            System.out.println("error");
-        else {
-            door.setIsOpened(true);
-            System.out.println("ok");
-        }
+        if (door.getIsOpened()) throw new Exception("Door already open");
+        else door.setIsOpened(true);
     }
 
     public void move(int x, int y, int z) {
