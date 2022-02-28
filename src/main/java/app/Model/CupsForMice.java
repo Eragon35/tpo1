@@ -1,20 +1,17 @@
 package app.Model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class CupsForMice {
     Mice mice;
 
-    public CupsForMice(Mice mice) {
-        this.mice = mice;
-    }
-
-    public Mice move (int x, int y, int z){
+    public void move (int x, int y, int z){
         mice.x=x;
         mice.y=y;
         mice.z=z;
-        return mice;
     }
 
     public Coordinates getCoordinates() {

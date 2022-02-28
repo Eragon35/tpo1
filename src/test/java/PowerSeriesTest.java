@@ -16,14 +16,12 @@ public class PowerSeriesTest {
     public void powerLowerThanZeroExceptionTest(){
         Exception exception = assertThrows(IllegalArgumentException.class, () -> ps.getResult(0, -1));
         assertEquals("Степень должна быть больше 0", exception.getMessage());
-
     }
 
     @Test
     public void powerTooBigExceptionTest(){
         Exception exception = assertThrows(IllegalArgumentException.class, () -> ps.getResult(0, 34));
         assertEquals("Это слишком долго считать, мальчик иди домой", exception.getMessage());
-
     }
 
     @Test
@@ -71,5 +69,4 @@ public class PowerSeriesTest {
     public void factoiralBigCheckTest(){
         assertEquals(2432902008176640000L, ps.factorial(20));
     }
-
 }

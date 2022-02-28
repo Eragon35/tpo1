@@ -53,5 +53,4 @@ public class ModelTest {
         cups.move(2,2,2);
         assertEquals(cups.getCoordinates(), coordinates);
     }
-
 }

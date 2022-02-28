@@ -29,19 +29,4 @@ public class PowerSeries {
         if (curr <= limit) return localFactorial(limit, curr + 1, ans * curr);
         else return ans;
     }
-
-
-    public static void main(String[] args) {
-        System.out.println(0.70327941920041);
-        PowerSeries ps = new PowerSeries();
-        int power = 24;
-        System.out.println(ps.getResult(0.78, power));
-        System.out.println(ps.factorial(power));
-        System.out.println(Math.sin(0.78));
-        // рофл, но при глубине больше 8 ответ перестаёт изменяться, т.к. double не бесконечен)
-        // плюс максимальная глубина факториала 20,
-        // дальше выходим за пределы long)))
-        // Long.MAX_VALUE = 2^63 - 1 ~ 8 * 10 ^ 18, а 20! ~ 2 * 10 ^ 18 & 21! ~ 5 * 10 ^ 19
-    }
-
 }
