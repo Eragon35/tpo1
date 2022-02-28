@@ -28,12 +28,10 @@ public class Graph {
 
     private void DFSUtil(int v, boolean[] visited, LinkedList<Integer> result)
     {
-        // mark current node as visited and print it -> adding to result list
         visited[v] = true;
         result.add(v);
 //        System.out.print(v + " ");
 
-        // recursive for all not visited neighbor vertices to this vertex
         for (int n : adj[v]) if (!visited[n]) DFSUtil(n, visited, result);
     }
 
