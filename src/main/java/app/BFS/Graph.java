@@ -22,7 +22,7 @@ public class Graph {
         if (v >= adj.length) throw new IllegalArgumentException("Нельзя добавлять вершины вне графа");
         if (w >= adj.length) throw new IllegalArgumentException("Нельзя добавлять вершины вне графа");
 
-
+        adj[v].add(w);
         adj[w].add(v);
     }
 
