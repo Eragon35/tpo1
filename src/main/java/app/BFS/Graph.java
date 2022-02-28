@@ -1,80 +1,72 @@
 package app.BFS;
 
-// Java program to print BFS traversal from a given source vertex.
-// BFS(int s) traverses vertices reachable from s.
-
 import java.util.LinkedList;
 
-// This class represents a directed graph using adjacency list
-// representation
-public class Graph
-{
-    private int V; // No. of vertices
-    private LinkedList<Integer> adj[]; //Adjacency Lists
 
-    // Constructor
-    public Graph(int v)
+public class Graph {
+    private final int size;
+    private final LinkedList<Integer>[] adj;
+
+    // constructor
+    public Graph(int size)
     {
-        V = v;
-        adj = new LinkedList[v];
-        for (int i=0; i<v; ++i)
-            adj[i] = new LinkedList();
+        if (size <= 0) throw new IllegalArgumentException("Граф не может состоять меньше чем из 1 вершины");
+        this.size = size;
+        adj = new LinkedList[size];
+        for (int i = 0; i < size; ++i) adj[i] = new LinkedList<>();
     }
 
-    // Function to add an edge into the graph
-    void addEdge(int v,int w)
-    {
+    public void addEdge(int v, int w) {
+        if (v < 0) throw new IllegalArgumentException("Вершина не может быть отрицательным элементов");
+        if (w < 0) throw new IllegalArgumentException("Вершина не может быть отрицательным элементов");
+        if (v >= adj.length) throw new IllegalArgumentException("Нельзя добавлять вершины вне графа");
+        if (w >= adj.length) throw new IllegalArgumentException("Нельзя добавлять вершины вне графа");
+
         adj[v].add(w);
+        adj[w].add(v);
     }
 
-    // prints BFS traversal from a given source s
-    public void BFS(int s)
+    private void DFSUtil(int v, boolean[] visited, LinkedList<Integer> result)
     {
-        // Mark all the vertices as not visited(By default
-        // set as false)
-        boolean[] visited = new boolean[V];
 
-        // Create a queue for BFS
-        LinkedList<Integer> queue = new LinkedList<>();
+        // mark the current node as visited and print it -> adding to result list
+        visited[v] = true;
+        result.add(v);
+//        System.out.print(v + " ");
 
-        // Mark the current node as visited and enqueue it
-        visited[s]=true;
-        queue.add(s);
-
-        while (queue.size() != 0)
-        {
-            // Dequeue a vertex from queue and print it
-            s = queue.poll();
-            System.out.print(s+" ");
-
-            // Get all adjacent vertices of the dequeued vertex s
-            // If a adjacent has not been visited, then mark it
-            // visited and enqueue it
-            for (int n : adj[s]) {
-                if (!visited[n]) {
-                    visited[n] = true;
-                    queue.add(n);
-                }
-            }
-        }
+        // recursive for all the vertices neighbor to this vertex that not visited
+        for (int n : adj[v]) if (!visited[n]) DFSUtil(n, visited, result);
     }
 
-    // Driver method to
+    // DFS
+    public LinkedList<Integer> DFS(int start)
+    {
+        if (start < 0) throw new IllegalArgumentException("Нельзя начать поиск с отрицательной вершины");
+        if (start >= adj.length) throw new IllegalArgumentException("Нельзя начать поиск с вершины вне графа");
+
+        boolean[] visited = new boolean[size];
+        LinkedList<Integer> result = new LinkedList<>();
+
+        DFSUtil(start, visited, result);
+        return result;
+    }
+
     public static void main(String[] args)
     {
-        Graph g = new Graph(4);
+        Graph g = new Graph(8);
 
-        g.addEdge(0, 1);
-        g.addEdge(0, 2);
-        g.addEdge(1, 2);
-        g.addEdge(2, 0);
-        g.addEdge(2, 3);
-        g.addEdge(3, 3);
+//        g.addEdge(0, 1);
+//        g.addEdge(0, 2);
+//        g.addEdge(0, 4);
+//        g.addEdge(1, 3);
+//        g.addEdge(1, 5);
+//        g.addEdge(3, 5);
+//        g.addEdge(3, 7);
+//        g.addEdge(7, 4);
+//        g.addEdge(5, 6);
 
-        System.out.println("Following is Breadth First Traversal "+
-                "(starting from vertex 2)");
 
-        g.BFS(2);
+        LinkedList<Integer> answer = g.DFS(6);
+        answer.forEach(System.out::print);
     }
 }
-
