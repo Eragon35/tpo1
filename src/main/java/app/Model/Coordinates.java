@@ -1,16 +1,12 @@
 package app.Model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class Coordinates {
     int x;
     int y;
     int z;
-
-    public Coordinates(int x, int y, int z) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-    }
 }

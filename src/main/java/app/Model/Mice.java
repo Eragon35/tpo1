@@ -1,5 +1,6 @@
 package app.Model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -7,19 +8,19 @@ import lombok.EqualsAndHashCode;
 @Data
 public class Mice extends Entity {
 
-    public Mice(String name, int x, int y, int z){
+    public Mice(String name, Coordinates coordinates) {
         this.name = name;
-        this.x = x;
-        this.y = y;
-        this.z = z;
+        this.coordinates=coordinates;
     }
 
-    public void hypnotize (Humanoids humanoids){
-    if(humanoids.isHypnotized)
-        System.out.println("error");
-    else{
-        humanoids.isHypnotized=true;
-        System.out.println("ok");
+    public void hypnotize(Humanoids humanoids) {
+        if (humanoids.getIsHypnotized())
+            System.out.println("error");
+        else {
+            humanoids.setIsHypnotized(true);
+            System.out.println("ok");
+        }
     }
-    }
+
+    public Coordinates getCoordinates(){return coordinates;}
 }

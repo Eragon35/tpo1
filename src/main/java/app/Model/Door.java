@@ -1,13 +1,13 @@
 package app.Model;
 
-public class Door extends Things{
+public class Door {
    private boolean isOpened;
 
    public Boolean getIsOpened(){
       return this.isOpened;
    }
 
-   public void setIsOpened(boolean status){
+   public void setIsOpened(Boolean status){
       this.isOpened = status;
    }
 }

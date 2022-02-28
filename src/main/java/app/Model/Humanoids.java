@@ -4,19 +4,17 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.SneakyThrows;
 
-@EqualsAndHashCode(callSuper = true)
+
 @Data
 public class Humanoids extends Entity {
-    public boolean isHypnotized;
-    public boolean isCaptured;
+    private boolean isHypnotized;
+    private boolean isCaptured;
 
-    public Humanoids(String name, int x, int y, int z, boolean isCaptured, boolean isHypnotized) {
+    public Humanoids(String name, Coordinates coordinates, boolean isCaptured, boolean isHypnotized) {
+        this.name = name;
         this.isHypnotized = isHypnotized;
         this.isCaptured = isCaptured;
-        this.name = name;
-        this.x = x;
-        this.y = y;
-        this.z = z;
+        this.coordinates = coordinates;
     }
 
     @SneakyThrows
@@ -31,13 +29,12 @@ public class Humanoids extends Entity {
         else door.setIsOpened(true);
     }
 
-    public void move(int x, int y, int z) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
+    public void move(Coordinates coordinates) {
+        this.coordinates = coordinates;
     }
+    public boolean getIsCaptured(){return isCaptured;}
+    public boolean getIsHypnotized(){return isHypnotized;}
+    public void setIsHypnotized(boolean hypnotized){isHypnotized = hypnotized;}
 
-    public Coordinates getCoordinates() {
-        return new Coordinates(this.x, this.y, this.z);
-    }
+    public Coordinates getCoordinates(){return coordinates;}
 }

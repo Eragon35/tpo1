@@ -4,16 +4,16 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ModelTest {
-    Humanoids artur = new Humanoids("Artur", 0, 0, 0,false, false);
-    Mice mice = new Mice("Ben", 0, 0,0);
+    Coordinates coordinates = new Coordinates(2, -2, 2);
+    Humanoids artur = new Humanoids("Artur", coordinates, true,false);
+    Mice mice = new Mice("Ben", coordinates);
     Door door = new Door();
-    Coordinates coordinates = new Coordinates(2, 2, 2);
-    CupsForMice cups = new CupsForMice(new Mice("Franky", 0, 0, 0));
+    CupsForMice cups = new CupsForMice(new Mice("Franky", coordinates));
 
     @Test
     public void captureTest(){
         artur.capture();
-        assertTrue(artur.isCaptured);
+        assertTrue(artur.getIsCaptured());
     }
 
     @Test
@@ -26,7 +26,7 @@ public class ModelTest {
     @Test
     public void hypnotizeTest(){
         mice.hypnotize(artur);
-        assertTrue(artur.isHypnotized);
+        assertTrue(artur.getIsHypnotized());
     }
 
     @Test
@@ -44,14 +44,13 @@ public class ModelTest {
 
     @Test
     public void moveHumanoidsTest(){
-        artur.move(2, 2, 2);
+        artur.move(coordinates);
         assertEquals(artur.getCoordinates(), coordinates);
     }
 
     @Test
     public void moveCupsForMiceTest(){
-        cups.move(2,2,2);
+        cups.move(coordinates);
         assertEquals(cups.getCoordinates(), coordinates);
     }
-
 }

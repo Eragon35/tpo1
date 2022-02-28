@@ -85,7 +85,4 @@ public class GraphTest {
         LinkedList<Integer> list = new LinkedList<>(Arrays.asList(6, 5, 1, 0, 2, 4, 7, 3));
         assertEquals(list, g.DFS(6));
     }
-
-
-
 }

@@ -7,23 +7,20 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PowerSeriesTest {
     PowerSeries ps = new PowerSeries();
     double delta = 0.000001;
-    double sin78 = 0.7032794192004101;
+    double sin78 = Math.sin(0.78);
     double sin0 = 0.0;
     double sinPiDivided2 = 1.0;
-
 
     @Test
     public void powerLowerThanZeroExceptionTest(){
         Exception exception = assertThrows(IllegalArgumentException.class, () -> ps.getResult(0, -1));
         assertEquals("Степень должна быть больше 0", exception.getMessage());
-
     }
 
     @Test
     public void powerTooBigExceptionTest(){
         Exception exception = assertThrows(IllegalArgumentException.class, () -> ps.getResult(0, 34));
         assertEquals("Это слишком долго считать, мальчик иди домой", exception.getMessage());
-
     }
 
     @Test
@@ -71,5 +68,4 @@ public class PowerSeriesTest {
     public void factoiralBigCheckTest(){
         assertEquals(2432902008176640000L, ps.factorial(20));
     }
-
 }
