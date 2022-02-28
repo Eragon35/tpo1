@@ -29,6 +29,7 @@ public class GraphTest {
     public void illegalConstructorExceptionTest(){
         Exception exception = assertThrows(IllegalArgumentException.class, () -> new Graph(0));
         assertEquals("Граф не может состоять меньше чем из 1 вершины", exception.getMessage());
+        assertEquals("Граф не может состоять меньше чем из 1 вершины", exception.getMessage());
     }
 
     @Test

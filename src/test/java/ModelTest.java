@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ModelTest {
+    Humanoids artur = new Humanoids("Artur", 0, 0, 0,false, false);
+    Humanoids trillian = new Humanoids("Trillion", 0, 0, 0,false, false);
+    Mice mice = new Mice("Ben", 0, 0,0);
     Coordinates coordinates = new Coordinates(2, -2, 2);
     Humanoids artur = new Humanoids("Artur", coordinates, true,false);
     Mice mice = new Mice("Ben", coordinates);
