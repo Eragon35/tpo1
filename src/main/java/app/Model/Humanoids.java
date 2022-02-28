@@ -22,18 +22,14 @@ public class Humanoids extends Entity {
     }
 
     @SneakyThrows
-    public void openTheDoor(Door door, Humanoids humanoids) {
-        if (coordinates.distance(humanoids.getCoordinates()) > 5)
-            throw new Exception("История не может пойти дальше, пока Триллиан не дотянет Артура до двери");
-        if (door.getIsOpened()) throw new Exception("Door already open");
-        else door.setIsOpened(true);
-    }
+    public boolean openTheDoor(Door door, Humanoids humanoids) {return !(door.getCoordinates().distance(humanoids.getCoordinates()) > 5);}
 
 
     @SneakyThrows
     public void move(Coordinates coordinates) {
-        if (captured.getIsHypnotized() && !(captured.getName().equals("Artur"))) throw new Exception("Артур как труп, его никуда не утащить");
-        if (name.equals("Trillion") && !(captured.getName().equals("Artur"))) throw new Exception("Неправильный порядок истории");
+        if (name.equals("Trillion") && (captured == null)) throw new Exception("Неправильный порядок истории");
+        if (captured.getIsHypnotized()) throw new Exception("Артур как труп, его никуда не утащить");
+        if (!name.equals("Trillion") || !captured.getName().equals("Artur")) throw new Exception(name + " взяла какого-то там " + captured.getName() + "а, а должна Триллиан Артура");
         this.coordinates = coordinates;
         captured.setCoordinates(coordinates);
     }
